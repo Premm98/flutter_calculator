@@ -10,14 +10,14 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.green,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               '0',
               style: TextStyle(
                 fontSize: 45,
@@ -25,7 +25,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: TextField(
                 style: TextStyle(color: Colors.black),
@@ -47,9 +47,26 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 ),
               ),
             ),
-            TextButton(
-              onPressed: function,
-              child: Text('Click me'),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                onPressed: function,
+                style: ButtonStyle(
+                  elevation: const MaterialStatePropertyAll(45),
+                  backgroundColor: const MaterialStatePropertyAll(Colors.black),
+                  foregroundColor: const MaterialStatePropertyAll(
+                    Colors.white,
+                  ),
+                  minimumSize: const MaterialStatePropertyAll(
+                    Size(double.infinity, 50),
+                  ),
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                ),
+                child: const Text('Convert'),
+              ),
             ),
           ],
         ),
