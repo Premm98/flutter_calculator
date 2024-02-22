@@ -1,35 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-void function() {
-  debugPrint('Button clicked');
-}
-
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPage();
+}
+
+class _CurrencyConverterMaterialPage
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
+    void function() {
+      setState(() {
+        result = double.parse(textController.text) * 81;
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.green,
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        elevation: 0,
+        title: const Text('USD Currency Converter'),
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 26,
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              '0',
-              style: TextStyle(
+            Text(
+              'INR $result',
+              style: const TextStyle(
                 fontSize: 45,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
+                controller: textController,
+                style: const TextStyle(color: Colors.black),
+                decoration: const InputDecoration(
                   hintText: 'Please enter the amount in USD',
                   hintStyle: TextStyle(color: Colors.black54),
                   prefixIcon: Icon(Icons.monetization_on),
@@ -42,7 +63,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                keyboardType: TextInputType.numberWithOptions(
+                keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
               ),
