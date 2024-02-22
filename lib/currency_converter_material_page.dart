@@ -26,6 +26,7 @@ class _CurrencyConverterMaterialPage
       appBar: AppBar(
         backgroundColor: Colors.green,
         elevation: 0,
+        centerTitle: true,
         title: const Text('USD Currency Converter'),
         titleTextStyle: const TextStyle(
           color: Colors.white,
